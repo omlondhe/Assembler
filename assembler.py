@@ -3,8 +3,11 @@
 # Name: Om Prashant Londhe
 
 from io import TextIOWrapper
+from instructionHandler import handleInstruction
+from test import printLiteralTable, printSymbolTable
+import variables
 
-with open("./script.txt", 'r') as script:
+with open("./input.txt", 'r') as script:
     # reading the script
     code: str = script.read()
     # getting instruction list
@@ -15,10 +18,15 @@ with open("./script.txt", 'r') as script:
     
     # looping over all the instructions
     for instruction in instructions:
+        # proceeding only if the instruction is not just a blank line
         if instruction.__len__() != 0:
-            print(instruction)
-            # handleInstruction(outputFile, instruction)
+            handleInstruction(instruction)
     
+    printSymbolTable()
+    printLiteralTable()
+
+    # writing to output file
+    outputFile.write(variables.processedAssemblyCode)
     # closing the output file
     outputFile.close()
         
