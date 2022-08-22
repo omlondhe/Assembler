@@ -14,7 +14,7 @@ with open("./input.txt", 'r') as script:
     instructions: list[str] = code.split('\n')
     numberOfInstructions: int = instructions.__len__()
     # defining the output file
-    outputFile: TextIOWrapper = open('output.txt', 'a')
+    outputFile: TextIOWrapper = open('output.txt', 'w')
     
     # looping over all the instructions
     for instruction in instructions:
