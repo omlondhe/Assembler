@@ -14,6 +14,8 @@ def handleLabeledInstruction(instructionData: list[str]):
     elif instructionData[1].upper() == "DC":
         variables.processedAssemblyCode += f"{variables.LC} {instructionData[2]}\n"
         literalTable.add(instructionData[2], -1)
+    elif instructionData[1].upper() == "EQU":
+        symbolTable[label] = symbolTable[instructionData[2]]
     elif instructionData[2].upper().__contains__('='):
         literal: str = instructionData[2].split(',')[1]
         literalTable.add(literal, -1)
@@ -25,6 +27,14 @@ def handleInstruction(instruction: str):
 
     if instruction.upper().startswith("START"): 
         variables.LC = int(instruction.split(' ')[1])
+    
+    elif instruction.upper().startswith("ORIGIN"):
+        origin: str = instruction.split(' ')[1]
+        if origin.__contains__('+'):
+            (symbol, displacement): tuple(str or int) = origin.split('+')
+            variables.LC = (symbolTable[symbol] + int(displacement))
+        else: 
+            variables.LC = int(origin)
     
     elif instruction.split(' ').__len__() == 3:
         instructionData: list[str] = getInstructionData(instruction)
