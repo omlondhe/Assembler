@@ -4,7 +4,7 @@
 
 from io import TextIOWrapper
 from instructionHandler import handleInstruction
-from test import printLiteralTable, printSymbolTable
+from test import printLiteralTable, printPoolTable, printSymbolTable
 import variables
 
 with open("./input.txt", 'r') as script:
@@ -24,9 +24,10 @@ with open("./input.txt", 'r') as script:
     
     printSymbolTable()
     printLiteralTable()
+    printPoolTable()
 
     # writing to output file
-    outputFile.write(variables.processedAssemblyCode)
+    outputFile.write(variables.intermediateCode)
     # closing the output file
     outputFile.close()
         

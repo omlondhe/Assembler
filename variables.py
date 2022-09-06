@@ -1,5 +1,6 @@
 LC: int = 0
 processedAssemblyCode: str = ""
+intermediateCode = ""
 
 EMOT = {
     "STOP":   (1, 0),

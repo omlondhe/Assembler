@@ -1,4 +1,4 @@
-from tables import literalTable, symbolTable
+from tables import literalTable, symbolTable, poolTable
 
 def printSymbolTable():
     print("\nSymbol table:")
@@ -8,3 +8,8 @@ def printSymbolTable():
 def printLiteralTable():
     print("\nLiteral table:")
     literalTable.print()
+
+def printPoolTable():
+    print("\nPool table:")
+    for pool in poolTable:
+        print(pool)
